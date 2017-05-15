@@ -1,0 +1,16 @@
+# Summary report for `r fileName` 
+```{r echo=FALSE}
+data <- read.table(fileName)
+```
+Your file contains `r nrow(data)` numbers, has a max of `r max(data$V1)` and a min of `r min(data$V1)`.
+Let's visualize the distribution:
+```{r histogram, echo=FALSE}
+numbers <- data$V1
+hist(numbers)
+```
+```{r echo=FALSE, results='asis'}
+library(xtable)
+table <- xtable(summary(data))
+print(table, type = "html")
+```
+
